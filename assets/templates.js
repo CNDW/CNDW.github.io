@@ -93,7 +93,7 @@ function program9(depth0,data) {
   data.buffer.push("Unowned");
   }
 
-  data.buffer.push("<div id=\"content\" role=\"application\" class=\"main col-xs-12\">");
+  data.buffer.push("<div id=\"content\" role=\"main\" class=\"main col-xs-12\">");
   stack1 = helpers['if'].call(depth0, "hasAvailableAction", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
