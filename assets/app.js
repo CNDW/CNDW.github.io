@@ -23,10 +23,10 @@ Xvote.Router.map(function() {
   this.route('games', {
     path: '/'
   });
-  return this.resource('games', {
-    path: '/games'
-  }, function() {
-    this.route('index');
+  return this.resource('games', function() {
+    this.route('index', {
+      path: '/'
+    });
     this.route('owned');
     return this.route('unowned');
   });
@@ -82,7 +82,7 @@ Xvote.ApplicationAdapter = DS.Adapter.extend({
           type: "GET",
           cache: true
         }).success(function(data) {
-          return Ember.run(null, resolve);
+          return Ember.run(null, resolve, data);
         }).error(function() {
           return Ember.run(null, reject);
         });
@@ -101,7 +101,7 @@ Xvote.ApplicationAdapter = DS.Adapter.extend({
           type: "GET",
           cache: true
         }).success(function(data) {
-          return Ember.run(null, resolve);
+          return Ember.run(null, resolve, data);
         }).error(function() {
           return Ember.run(null, reject);
         });
@@ -128,7 +128,7 @@ Xvote.ApplicationAdapter = DS.Adapter.extend({
         type: "GET",
         cache: true
       }).success(function(data) {
-        return Ember.run(null, resolve);
+        return Ember.run(null, resolve, data);
       }).error(function() {
         return Ember.run(null, reject);
       });
@@ -181,7 +181,7 @@ Xvote.GamesController = Em.ArrayController.extend({
     if (cookie === 'no') {
       return false;
     }
-  }).property(),
+  }).property('hasAvailableAction'),
   useAction: function() {
     Xvote.ActionCookie.create();
     return this.set('hasAvailableAction', false);
@@ -264,7 +264,10 @@ Xvote.Game = DS.Model.extend({
 
 Xvote.GamesRoute = Em.Route.extend({
   model: function() {
+    var self;
+    self = this;
     return this.store.find('game').then(function(value) {
+      self.transitionTo('games.index');
       return value;
     }, function(rejection) {
       return alert('Connection error: unable to communicate with server.');

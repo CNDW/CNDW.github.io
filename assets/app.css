@@ -5230,13 +5230,16 @@ html, body {
   height: 100px;
   text-align: justify; }
   #filters .panel .panel-heading {
+    font-size: 2.2em;
     margin-left: -15px;
     margin-right: -15px; }
 
 .filters {
-  list-style: none; }
+  list-style: none;
+  font-size: 2em; }
   .filters li {
-    display: inline; }
+    display: inline;
+    padding-right: 50px; }
     .filters li a {
       color: #3c763d;
       text-decoration: none;
