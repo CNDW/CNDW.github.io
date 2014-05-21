@@ -82,7 +82,7 @@ Xvote.ApplicationAdapter = DS.Adapter.extend({
           type: "GET",
           cache: true
         }).success(function(data) {
-          return Ember.run(null, resolve, data);
+          return Ember.run(null, resolve);
         }).error(function() {
           return Ember.run(null, reject);
         });
@@ -101,7 +101,7 @@ Xvote.ApplicationAdapter = DS.Adapter.extend({
           type: "GET",
           cache: true
         }).success(function(data) {
-          return Ember.run(null, resolve, data);
+          return Ember.run(null, resolve);
         }).error(function() {
           return Ember.run(null, reject);
         });
