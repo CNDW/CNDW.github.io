@@ -20,9 +20,21 @@ App.Router.map(function() {
   this.route('blog');
   this.route('gallery');
   this.route('about');
-  this.route('catalogue');
-  this.route('custom');
-  return this.route('instock');
+  this.resource('catalogue', function() {
+    return this.route('index', {
+      path: '/bags'
+    });
+  });
+  this.route('bag');
+  this.route('custom', function() {
+    this.route('index', {
+      path: '/colors'
+    });
+    this.route('features');
+    return this.route('extras');
+  });
+  this.route('instock');
+  return this.route('instockitem');
 });
 
 App.ApplicationFixture = DS.FixtureAdapter.extend();
