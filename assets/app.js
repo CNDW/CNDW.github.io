@@ -26,7 +26,7 @@ App.Router.map(function() {
     });
   });
   this.route('bag');
-  this.route('custom', function() {
+  this.resource('custom', function() {
     this.route('index', {
       path: '/colors'
     });
@@ -34,7 +34,8 @@ App.Router.map(function() {
     return this.route('extras');
   });
   this.route('instock');
-  return this.route('instockitem');
+  this.route('instockitem');
+  return this.route('cart');
 });
 
 App.ApplicationFixture = DS.FixtureAdapter.extend();
